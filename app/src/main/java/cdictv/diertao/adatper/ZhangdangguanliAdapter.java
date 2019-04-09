@@ -60,7 +60,7 @@ public class ZhangdangguanliAdapter extends BaseAdapter {
         zhangbanCarper = (TextView) convertView.findViewById(R.id.zhangban_carper);
         zhangbanCartime = (TextView) convertView.findViewById(R.id.zhangban_cartime);
 
-        zhangbanCarid.setText(beans.get(position).carid);
+        zhangbanCarid.setText(beans.get(position).carid+"");
         zhangbanCarnum.setText(beans.get(position).carnum);
         zhangbanCarmoney.setText(beans.get(position).carmoney);
         zhangbanCarper.setText(beans.get(position).carper);
