@@ -98,7 +98,7 @@ public class ChognzhiAdapter extends BaseAdapter {
         ImageView chongzhichepaiimg =  convertView.findViewById(R.id.  chongzhi_chepaiimg);
 
         chognzhiCheckbox.setTag(position);
-        chognzhiDagliogok.setTag(position);
+        chognzhiOk.setTag(position);
         chognzhiCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
