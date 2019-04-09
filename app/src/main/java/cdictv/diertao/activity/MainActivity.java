@@ -1,5 +1,6 @@
 package cdictv.diertao.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -80,10 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.zhanghu:
-
+                startActivity(new Intent(MainActivity.this,ZhangdangguanliActivity.class));
                 break;
             case R.id.czls:
-
+                startActivity(new Intent(MainActivity.this,ZhangHuguanliActivity.class));
                 break;
             case R.id.gerenzhongxin:
 
