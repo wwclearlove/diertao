@@ -1,5 +1,6 @@
 package cdictv.diertao.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cdictv.diertao.R;
+import cdictv.diertao.util.Sputils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Sputils.putString("fz","50");
         initView();
     }
 
@@ -86,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.gerenzhongxin:
-
+                startActivity(new Intent(MainActivity.this, PersonActivity.class));
                 break;
             case R.id.wdxiaoxi:
 
@@ -98,13 +101,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.erweima:
-
+                startActivity(new Intent(MainActivity.this, ErweimaActivity.class));
                 break;
             case R.id.cheliangshoufei:
 
                 break;
             case R.id.yule:
-
+                startActivity(new Intent(MainActivity.this, NewsActivity.class));
                 break;
         }
     }

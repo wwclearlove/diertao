@@ -21,6 +21,7 @@ import cdictv.diertao.R;
 import cdictv.diertao.bean.PersonBean;
 import cdictv.diertao.http.Mycall;
 import cdictv.diertao.http.ShowOkhttpApi;
+import cdictv.diertao.util.Sputils;
 
 
 public class GeRenxingxiFrament extends Fragment {
@@ -80,6 +81,7 @@ public class GeRenxingxiFrament extends Fragment {
 
     private void xuanyan(PersonBean.DataBean data) {
         geName.setText("姓名："+data.name+"");
+        Sputils.putString("name",data.name);
         geSex.setText("性别："+data.sex+"");
         gePhone.setText("手机号："+data.phone);
         getShengfengzheng.setText("身份证："+data.idcard);
