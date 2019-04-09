@@ -5,7 +5,6 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "EtcBean")
 public class EtcBean {
-
     @DatabaseField(columnName = "ectid")
     public String ectid;
     @DatabaseField(columnName = "ectnum")

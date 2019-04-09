@@ -39,6 +39,7 @@
 
     </LinearLayout>
     <TextView
+        android:id="@+id/heji"
         android:layout_marginTop="10dp"
         android:textSize="40dp"
         android:gravity="center"

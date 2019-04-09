@@ -53,6 +53,7 @@
         <Spinner
             android:id="@+id/chogzhi_chogzhinum"
             android:layout_width="300dp"
+            android:entries="@array/chehao2"
             android:background="@drawable/daglog_edittext"
             android:layout_height="50dp" />
     </LinearLayout>
@@ -79,6 +80,7 @@
     </LinearLayout>
 
     <Button
+        android:onClick="onClick"
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="wrap_content"

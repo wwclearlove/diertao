@@ -12,9 +12,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import cdictv.diertao.R;
+import cdictv.diertao.bean.EtcBean;
 import cdictv.diertao.http.Mycall;
 import cdictv.diertao.http.ShowOkhttpApi;
+import cdictv.diertao.sql.DataBaseHelp;
 import cdictv.diertao.util.Sputils;
 
 public class EtccqActivity extends AppCompatActivity implements View.OnClickListener {
@@ -29,11 +37,20 @@ public class EtccqActivity extends AppCompatActivity implements View.OnClickList
     private Button cz;
     private String mMenony;
     int num=1;
+    Dao mDao;
+    private String mChepai;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_etccq);
+        try {
+            mDao= DataBaseHelp.getDataBase(EtccqActivity.this).getDao(EtcBean.class);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         initView();
+
     }
 
     private void initView() {
@@ -59,6 +76,7 @@ public class EtccqActivity extends AppCompatActivity implements View.OnClickList
                         num=3;
                         break;
                 }
+                mChepai = (String) parent.getItemAtPosition(position);
             }
 
             @Override
@@ -106,6 +124,18 @@ public class EtccqActivity extends AppCompatActivity implements View.OnClickList
                                 }else if(num==3) {
                                     Sputils.putString("num3",Integer.parseInt(Sputils.getString("num3"))+Integer.parseInt(mMenony)+"");
                                 }
+                                EtcBean etcBean=new EtcBean();
+                                etcBean.ectid=num+"";
+                                etcBean.ectmoney=mMenony;
+                                etcBean.ectnum=mChepai;
+                                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+                                etcBean.ecttime=simpleDateFormat.format(new Date());
+                                try {
+                                    mDao.create(etcBean);
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                                Toast.makeText(EtccqActivity.this,json,Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
