@@ -22,30 +22,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ZhangdangguanliActivity"/>
+        <activity android:name=".activity.ZhangdangguanliActivity"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.PersonActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.ZhangHuguanliActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.ErweimaActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.shengchengActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.NewsActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.WebViewActivity"
-            android:screenOrientation="landscape"></activity>
-        <activity android:name=".activity.SJFXActivity />
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".activity.SJFXActivity"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.WDXXActivity"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".activity.GaosuETCActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>
