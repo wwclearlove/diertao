@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,7 @@ public class GeRenxingxiFrament extends Fragment {
                 , new Mycall() {
                     @Override
                     public void success(String json) {
+                        Log.d("+=", "filed: "+json);
                         Gson gson=new Gson();
                         try{
                             PersonBean personBean=gson.fromJson(json,PersonBean.class);
@@ -62,15 +64,15 @@ public class GeRenxingxiFrament extends Fragment {
                            carlist.clear();
                            carlist.addAll(car);
                             xuanyan(data);
-                        }catch (Exception e){
-
-                        }finally {
+                            mProgressDialog.dismiss();
+                        }catch (Exception e) {
                             mProgressDialog.dismiss();
                         }
                     }
 
                     @Override
                     public void filed(String msg) {
+                        Log.d("+=", "filed: "+msg);
                         mProgressDialog.dismiss();
                     }
                 });

@@ -36,7 +36,7 @@ public class NetworkApi {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-               final String str=request.toString().trim();
+               final String str=response.body().string().trim();
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
