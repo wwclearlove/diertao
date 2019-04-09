@@ -33,13 +33,19 @@
             android:name=".activity.ErweimaActivity"
             android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".activity.shengchengActivity"
+        <activity
+            android:name=".activity.shengchengActivity"
             android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".activity.NewsActivity"
+        <activity
+            android:name=".activity.NewsActivity"
             android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".activity.WebViewActivity"
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity android:name=".activity.GaosuETCActivity"
             android:screenOrientation="landscape">
         </activity>
     </application>
