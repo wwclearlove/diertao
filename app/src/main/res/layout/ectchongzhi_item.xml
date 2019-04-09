@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ect_carid"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="序号"/>
+    <TextView
+        android:id="@+id/ect_carnum"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="车号"/>
+    <TextView
+        android:id="@+id/ect_carmoney"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="充值金额"/>
+    <TextView
+        android:id="@+id/ect_cartime"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="充值时间"/>
+
+</LinearLayout>
