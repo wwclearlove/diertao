@@ -61,7 +61,7 @@
         <activity android:name=".activity.EtccqActivity"
             android:screenOrientation="landscape">
         </activity>
-       
+
     </application>
 
 </manifest>

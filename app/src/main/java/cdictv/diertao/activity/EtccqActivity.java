@@ -85,7 +85,15 @@ public class EtccqActivity extends AppCompatActivity implements View.OnClickList
                 ed_menony.setText("100");
                 break;
             case R.id.cz:
-                submit();
+                mMenony = ed_menony.getText().toString().trim();
+                if (TextUtils.isEmpty(mMenony)) {
+                    Toast.makeText(this, "请输入1-999", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Integer.parseInt(mMenony)==0) {
+                    Toast.makeText(this, "请输入1-999", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 ShowOkhttpApi.setCar("https://www.easy-mock.com/mock/5c8f3515c42b1c0235654282/jiaotong/recharge"
                         , num + "", mMenony, new Mycall() {
                             @Override
@@ -93,8 +101,6 @@ public class EtccqActivity extends AppCompatActivity implements View.OnClickList
                                Toast.makeText(EtccqActivity.this,json,Toast.LENGTH_SHORT).show();
                                 if(num==1){
                                     Sputils.putString("num1",Integer.parseInt(Sputils.getString("num1"))+Integer.parseInt(mMenony)+"");
-
-
                                 }else if(num==2){
                                     Sputils.putString("num2",Integer.parseInt(Sputils.getString("num2"))+Integer.parseInt(mMenony)+"");
                                 }else if(num==3) {
@@ -111,18 +117,4 @@ public class EtccqActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void submit() {
-        mMenony = ed_menony.getText().toString().trim();
-        if (TextUtils.isEmpty(mMenony)) {
-            Toast.makeText(this, "请输入1-999", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (Integer.parseInt(mMenony)==0) {
-            Toast.makeText(this, "请输入1-999", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-
-
-    }
 }
