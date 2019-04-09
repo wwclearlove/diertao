@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                        ZhangHuguanliActivity.class));
                 break;
             case R.id.czls:
-
+                startActivity(new Intent(MainActivity.this,ZhangdangguanliActivity.class));
                 break;
             case R.id.gerenzhongxin:
                 startActivity(new Intent(MainActivity.this,

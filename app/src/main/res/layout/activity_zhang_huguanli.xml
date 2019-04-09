@@ -8,6 +8,7 @@
     tools:context=".activity.ZhangHuguanliActivity">
 
     <LinearLayout
+        android:id="@+id/table"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#0099CC"

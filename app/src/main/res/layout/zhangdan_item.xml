@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/zhangban_carid"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="序号"/>
+    <TextView
+        android:id="@+id/zhangban_carnum"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="车号"/>
+    <TextView
+        android:id="@+id/zhangban_carmoney"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="充值金额"/>
+    <TextView
+        android:id="@+id/zhangban_carper"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="操作人"/>
+    <TextView
+        android:id="@+id/zhangban_cartime"
+        android:background="@drawable/biankuang_itme"
+        android:gravity="center"
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+        android:text="充值时间"/>
+
+</LinearLayout>

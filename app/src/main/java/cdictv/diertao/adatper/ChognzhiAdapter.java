@@ -4,6 +4,7 @@ package cdictv.diertao.adatper;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,22 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cdictv.diertao.R;
+import cdictv.diertao.bean.CarChongzhijiluBean;
 import cdictv.diertao.bean.ChongzhiguanliBean;
+import cdictv.diertao.http.Mycall;
+import cdictv.diertao.http.ShowOkhttpApi;
+import cdictv.diertao.sql.DataBaseHelp;
 
 public class ChognzhiAdapter extends BaseAdapter {
 
@@ -39,9 +50,20 @@ public class ChognzhiAdapter extends BaseAdapter {
     private Button chognzhiQuxiao;
     private TextView chognzhidagliogchongzho;
 
+    private Dao dao;
+
+    String leirong;
+    ProgressDialog progressDialog;
+
+
     public ChognzhiAdapter(Context context, List<ChongzhiguanliBean.DataBean> list) {
         this.context = context;
         this.list = list;
+        try {
+            dao = DataBaseHelp.getDataBase(context).getDao(CarChongzhijiluBean.class);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -61,6 +83,7 @@ public class ChognzhiAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.chognzhi_item,parent,false);
         }
@@ -74,7 +97,7 @@ public class ChognzhiAdapter extends BaseAdapter {
         ImageView chongzhichepaiimg =  convertView.findViewById(R.id.  chongzhi_chepaiimg);
 
         chognzhiCheckbox.setTag(position);
-        chognzhiDagliogok.setTag(position);
+        chognzhiOk.setTag(position);
         chognzhiCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,15 +140,10 @@ public class ChognzhiAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
               View view = View.inflate(context,R.layout.dailog_chongzhi,null);
-
-
-
               chogzhiChogzhinum = (EditText)view.findViewById(R.id.chogzhi_chogzhinum);
               chognzhiDagliogok = (Button) view.findViewById(R.id.chognzhi_dagliogok);
               chognzhiQuxiao = (Button) view.findViewById(R.id.chognzhi_quxiao);
               chognzhidagliogchongzho =  view.findViewById(R.id.chognzhi_dagliogchongzho);
-
-
               final AlertDialog dialog = new AlertDialog.Builder(context).setView(view).show();
 
 
@@ -133,8 +151,40 @@ public class ChognzhiAdapter extends BaseAdapter {
                 chognzhiDagliogok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int i = (int) v.getTag();
+
+                        final int i = (int) v.getTag();
                         chognzhidagliogchongzho.setText(list.get(i).chepai+"");
+                        leirong = chogzhiChogzhinum.getText().toString();
+                        //https://www.easy-mock.com/mock/5c8f3515c42b1c0235654282/jiaotong/recharge
+
+                        ShowOkhttpApi.setCar("https://www.easy-mock.com/mock/5c8f3515c42b1c0235654282/jiaotong/recharge",list.get(position).id+"",leirong, new Mycall() {
+                            @Override
+                            public void success(String json) {
+                                Toast.makeText(context,json,Toast.LENGTH_SHORT).show();
+                                 int money= list.get(i).money+Integer.parseInt(leirong);
+                                chongzhiMoney.setText(money+"");
+                                CarChongzhijiluBean bean1 = new CarChongzhijiluBean();
+                                bean1.carnum = list.get(i).id+"";
+                                bean1.carmoney = leirong;
+                                bean1.carper = "admin";
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH-mm");
+                                bean1.cartime =  format.format(new Date());
+                                try {
+                                    dao.create(bean1);
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                                notifyDataSetChanged();
+                                dialog.cancel();
+                            }
+
+                            @Override
+                            public void filed(String msg) {
+
+                            }
+                        });
+
+                        progressDialog.dismiss();
                     }
                 });
                 chognzhiQuxiao.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +196,6 @@ public class ChognzhiAdapter extends BaseAdapter {
 
             }
         });
-
         return convertView;
     }
 
