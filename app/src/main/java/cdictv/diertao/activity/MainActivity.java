@@ -83,8 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.zhanghu:
-                startActivity(new Intent(MainActivity.this,
-                       ZhangHuguanliActivity.class));
+                startActivity(new Intent(MainActivity.this,ZhangHuguanliActivity.class));
                 break;
             case R.id.czls:
                 startActivity(new Intent(MainActivity.this,ZhangdangguanliActivity.class));

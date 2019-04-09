@@ -30,19 +30,24 @@
             android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.ZhangHuguanliActivity"
+
             android:screenOrientation="landscape"/>
+
         <activity
             android:name=".activity.ErweimaActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.shengchengActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.NewsActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity.WebViewActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.ECTyueActivity" />
+        <activity android:name=".activity.ECTchongzhijiluActivity"></activity>
+
         <activity
             android:name=".activity.SJFXActivity"
             android:screenOrientation="landscape"/>
@@ -52,8 +57,11 @@
         <activity
             android:name=".activity.GaosuETCActivity"
             android:screenOrientation="landscape"/>
-        <activity android:name=".activity.EtccqActivity">
+
+        <activity android:name=".activity.EtccqActivity"
+            android:screenOrientation="landscape">
         </activity>
+       
     </application>
 
 </manifest>
