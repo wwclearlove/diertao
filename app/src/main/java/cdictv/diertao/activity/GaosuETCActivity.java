@@ -39,6 +39,18 @@ public class GaosuETCActivity extends AppCompatActivity {
                 startActivity(new Intent(GaosuETCActivity.this,EtccqActivity.class));
             }
         });
+        ye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GaosuETCActivity.this,ECTyueActivity.class));
+            }
+        });
+        cqjilu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GaosuETCActivity.this,ECTchongzhijiluActivity.class));
+            }
+        });
     }
 
 
