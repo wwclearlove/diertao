@@ -20,8 +20,6 @@ public class ZhangHuguanliActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zhang_huguanli);
         initView();
-
-
     }
 
     private void initView() {
