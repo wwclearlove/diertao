@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 import cdictv.diertao.bean.CarChongzhijiluBean;
 import cdictv.diertao.bean.ChongzhiguanliBean;
+import cdictv.diertao.bean.EtcBean;
 
 public class DataBaseHelp extends OrmLiteSqliteOpenHelper {
 
@@ -31,6 +32,7 @@ public class DataBaseHelp extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
             TableUtils.createTable(connectionSource, CarChongzhijiluBean.class);
+            TableUtils.createTable(connectionSource, EtcBean.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
