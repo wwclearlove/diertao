@@ -85,20 +85,26 @@ public class ChognzhiAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
+        View mview;
         if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.chognzhi_item,parent,false);
+            mview = LayoutInflater.from(context).inflate(R.layout.chognzhi_item,parent,false);
+        }else {
+            mview = convertView;
         }
 
-        chongzhiId = (TextView) convertView.findViewById(R.id.chongzhi_id);
-        chongzhiChepai = (TextView) convertView.findViewById(R.id.chongzhi_chepai);
-        chongzhiChezhu = (TextView) convertView.findViewById(R.id.chongzhi_chezhu);
-        chongzhiMoney = (TextView) convertView.findViewById(R.id.chongzhi_money);
-        chognzhiCheckbox = (CheckBox)convertView. findViewById(R.id.chognzhi_checkbox);
-        chognzhiOk = (Button) convertView.findViewById(R.id.chognzhi_ok);
-        ImageView chongzhichepaiimg =  convertView.findViewById(R.id.  chongzhi_chepaiimg);
+        chongzhiId = (TextView) mview.findViewById(R.id.chongzhi_id);
+        chongzhiChepai = (TextView) mview.findViewById(R.id.chongzhi_chepai);
+        chongzhiChezhu = (TextView) mview.findViewById(R.id.chongzhi_chezhu);
+        chongzhiMoney = (TextView) mview.findViewById(R.id.chongzhi_money);
+        chognzhiCheckbox = (CheckBox)mview. findViewById(R.id.chognzhi_checkbox);
+        chognzhiOk = (Button) mview.findViewById(R.id.chognzhi_ok);
+        ImageView chongzhichepaiimg =  mview.findViewById(R.id.  chongzhi_chepaiimg);
 
+
+        chognzhiCheckbox.setChecked(list.get(position).flag);
         chognzhiCheckbox.setTag(position);
         chognzhiOk.setTag(position);
+
         chognzhiCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,27 +146,27 @@ public class ChognzhiAdapter extends BaseAdapter {
         chognzhiOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final int i = (int) v.getTag();
               View view = View.inflate(context,R.layout.dailog_chongzhi,null);
               chogzhiChogzhinum = (EditText)view.findViewById(R.id.chogzhi_chogzhinum);
               chognzhiDagliogok = (Button) view.findViewById(R.id.chognzhi_dagliogok);
               chognzhiQuxiao = (Button) view.findViewById(R.id.chognzhi_quxiao);
               chognzhidagliogchongzho =  view.findViewById(R.id.chognzhi_dagliogchongzho);
+                chognzhidagliogchongzho.setText("车牌号："+list.get(i).chepai);
               final AlertDialog dialog = new AlertDialog.Builder(context).setView(view).show();
-
-
 
                 chognzhiDagliogok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        final int i = (int) v.getTag();
-                        chognzhidagliogchongzho.setText(list.get(i).chepai+"");
+
                         leirong = chogzhiChogzhinum.getText().toString();
                         //https://www.easy-mock.com/mock/5c8f3515c42b1c0235654282/jiaotong/recharge
 
                         ShowOkhttpApi.setCar("https://www.easy-mock.com/mock/5c8f3515c42b1c0235654282/jiaotong/recharge",list.get(position).id+"",leirong, new Mycall() {
                             @Override
                             public void success(String json) {
+
                                 Toast.makeText(context,json,Toast.LENGTH_SHORT).show();
                                  int money= list.get(i).money+Integer.parseInt(leirong);
                                 chongzhiMoney.setText(money+"");
@@ -168,7 +174,7 @@ public class ChognzhiAdapter extends BaseAdapter {
                                 bean1.carnum = list.get(i).id+"";
                                 bean1.carmoney = leirong;
                                 bean1.carper = "admin";
-                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH-mm");
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm");
                                 bean1.cartime =  format.format(new Date());
                                 try {
                                     dao.create(bean1);
@@ -184,8 +190,6 @@ public class ChognzhiAdapter extends BaseAdapter {
 
                             }
                         });
-
-                        progressDialog.dismiss();
                     }
                 });
                 chognzhiQuxiao.setOnClickListener(new View.OnClickListener() {
@@ -197,7 +201,7 @@ public class ChognzhiAdapter extends BaseAdapter {
 
             }
         });
-        return convertView;
+        return mview;
     }
 
     public List getActivtelist(){
