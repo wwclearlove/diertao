@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class ChognzhiAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.chognzhi_item,parent,false);
         }
@@ -70,6 +71,7 @@ public class ChognzhiAdapter extends BaseAdapter {
         chongzhiMoney = (TextView) convertView.findViewById(R.id.chongzhi_money);
         chognzhiCheckbox = (CheckBox)convertView. findViewById(R.id.chognzhi_checkbox);
         chognzhiOk = (Button) convertView.findViewById(R.id.chognzhi_ok);
+        ImageView chongzhichepaiimg =  convertView.findViewById(R.id.  chongzhi_chepaiimg);
 
         chognzhiCheckbox.setTag(position);
         chognzhiDagliogok.setTag(position);
@@ -93,6 +95,24 @@ public class ChognzhiAdapter extends BaseAdapter {
         chongzhiChezhu.setText(list.get(position).chezhu+"");
         chongzhiMoney.setText(list.get(position).money+"");
 
+
+        switch (position){
+            case 0:
+                chongzhichepaiimg.setImageResource(R.mipmap.bmw);
+                break;
+            case 1:
+                chongzhichepaiimg.setImageResource(R.mipmap.zhonghua);
+                break;
+            case 2:
+                chongzhichepaiimg.setImageResource(R.mipmap.benz);
+                break;
+            case 3:
+                chongzhichepaiimg.setImageResource(R.mipmap.mazda);
+                break;
+
+        }
+
+
         chognzhiOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,12 +128,13 @@ public class ChognzhiAdapter extends BaseAdapter {
 
               final AlertDialog dialog = new AlertDialog.Builder(context).setView(view).show();
 
+
+
                 chognzhiDagliogok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         int i = (int) v.getTag();
                         chognzhidagliogchongzho.setText(list.get(i).chepai+"");
-
                     }
                 });
                 chognzhiQuxiao.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +143,6 @@ public class ChognzhiAdapter extends BaseAdapter {
                         dialog.cancel();
                     }
                 });
-
 
             }
         });
