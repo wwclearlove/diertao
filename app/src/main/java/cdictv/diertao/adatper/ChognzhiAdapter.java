@@ -28,7 +28,6 @@ import java.util.List;
 import cdictv.diertao.R;
 import cdictv.diertao.bean.CarChongzhijiluBean;
 import cdictv.diertao.bean.ChongzhiguanliBean;
-import cdictv.diertao.bean.PersonBean;
 import cdictv.diertao.http.Mycall;
 import cdictv.diertao.http.ShowOkhttpApi;
 import cdictv.diertao.sql.DataBaseHelp;

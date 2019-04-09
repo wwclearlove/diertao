@@ -20,6 +20,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_launcher"/>
@@ -29,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="张三"
-                android:textSize="30dp"/>
+                android:textSize="25dp"/>
 
         </LinearLayout>
         <LinearLayout
@@ -57,6 +58,52 @@
 
         </LinearLayout>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:background="@drawable/daglog_edittext"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="序号"/>
+        <TextView
+            android:background="@drawable/daglog_edittext"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="车号"/>
+        <TextView
+            android:background="@drawable/daglog_edittext"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="充值金额"/>
+        <TextView
+            android:background="@drawable/daglog_edittext"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="操作人"/>
+        <TextView
+            android:background="@drawable/daglog_edittext"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="充值时间"/>
+
+
+    </LinearLayout>
     <TextView
         android:visibility="gone"
         android:gravity="center"
@@ -66,6 +113,8 @@
         android:textSize="35sp"
         android:layout_height="100dp"/>
     <ListView
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

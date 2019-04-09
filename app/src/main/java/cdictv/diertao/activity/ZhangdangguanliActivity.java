@@ -1,7 +1,7 @@
 package cdictv.diertao.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -39,7 +38,7 @@ public class ZhangdangguanliActivity extends AppCompatActivity {
         setContentView(R.layout.activity_zhangdangguanli);
         initView();
         ListView listview = findViewById(R.id.zhangdan_listview);
-        String[] strings = new String[]{"时间升序","时间降序"};
+        String[] strings = new String[]{"时间降序","时间升序"};
         zhangdanSpinner.setAdapter(new ArrayAdapter<String>(ZhangdangguanliActivity.this,R.layout.txte_spinner,R.id.zhangban_text,strings));
         zhangdanSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -56,6 +55,7 @@ public class ZhangdangguanliActivity extends AppCompatActivity {
             dao = DataBaseHelp.getDataBase(this).getDao(CarChongzhijiluBean.class);
 
             beans = dao.queryForAll();
+            selectPaixu(1);
             if(beans.size() ==0){
                 Toast.makeText(ZhangdangguanliActivity.this,"暂无历史记录",Toast.LENGTH_LONG).show();
             }

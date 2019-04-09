@@ -4,7 +4,6 @@
     package="cdictv.diertao">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -23,15 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ZhangdangguanliActivity"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.PersonActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".activity.ZhangHuguanliActivity"
             android:screenOrientation="landscape" />
-        <activity
-            android:name=".activity.ZhangdangguanliActivity"
-            android:screenOrientation="landscape" />
+
         <activity
             android:name=".activity.ErweimaActivity"
             android:screenOrientation="landscape" />
@@ -46,6 +45,17 @@
             android:screenOrientation="landscape" />
         <activity android:name=".activity.ECTyueActivity" />
         <activity android:name=".activity.ECTchongzhijiluActivity"></activity>
+
+        <activity
+            android:name=".activity.SJFXActivity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".activity.WDXXActivity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".activity.GaosuETCActivity"
+            android:screenOrientation="landscape"/>
+>>>>>>> ffa7ec8e60b6572e92c4a9d7069e5648c4a7f154
     </application>
 
 </manifest>
