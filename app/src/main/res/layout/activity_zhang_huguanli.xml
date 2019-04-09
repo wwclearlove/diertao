@@ -60,6 +60,7 @@
 
 
     <ListView
+        tools:listitem="@layout/chognzhi_item"
         android:id="@+id/zhanghu_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

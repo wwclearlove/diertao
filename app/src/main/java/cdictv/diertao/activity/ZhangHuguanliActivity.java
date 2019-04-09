@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ public class ZhangHuguanliActivity extends AppCompatActivity {
     private Button chognzhiDagliogok;
     private Button chognzhiQuxiao;
     private TextView chognzhidagliogchongzho;
+    private ImageButton zhangdantuichu;
     ProgressDialog dialog;
 //
 
@@ -72,6 +74,12 @@ public class ZhangHuguanliActivity extends AppCompatActivity {
             }
         });
 
+        zhangdantuichu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         chongzhi_piliang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,7 +188,13 @@ public class ZhangHuguanliActivity extends AppCompatActivity {
         chongzhi_piliang = (TextView) findViewById(R.id.chongzhi_piliang);
         chongzhi_jilu = (TextView) findViewById(R.id.chongzhi_jilu);
         zhanghu_listview = (ListView) findViewById(R.id.zhanghu_listview);
+        zhangdantuichu =  findViewById(R.id.zhangdan_tuichu);
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
 }

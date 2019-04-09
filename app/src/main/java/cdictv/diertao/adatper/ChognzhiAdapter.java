@@ -57,6 +57,7 @@ public class ChognzhiAdapter extends BaseAdapter {
     ProgressDialog progressDialog;
 
 
+
     public ChognzhiAdapter(Context context, List<ChongzhiguanliBean.DataBean> list) {
         this.context = context;
         this.list = list;
@@ -98,10 +99,11 @@ public class ChognzhiAdapter extends BaseAdapter {
         chongzhiMoney = (TextView) mview.findViewById(R.id.chongzhi_money);
         chognzhiCheckbox = (CheckBox)mview. findViewById(R.id.chognzhi_checkbox);
         chognzhiOk = (Button) mview.findViewById(R.id.chognzhi_ok);
-        ImageView chongzhichepaiimg =  mview.findViewById(R.id.  chongzhi_chepaiimg);
+        ImageView chongzhichepaiimg =  mview.findViewById(R.id.chongzhi_chepaiimg);
 
 
         chognzhiCheckbox.setChecked(list.get(position).flag);
+
         chognzhiCheckbox.setTag(position);
         chognzhiOk.setTag(position);
 
@@ -110,7 +112,7 @@ public class ChognzhiAdapter extends BaseAdapter {
             public void onClick(View v) {
                int i  = (int) v.getTag();
                 list.get(i).flag = !list.get(i).flag;
-                chognzhiCheckbox.setChecked( list.get(i).flag);
+
                 if(list.get(i).flag){
                     activtelist.add(list.get(i));
                 }else {
@@ -152,17 +154,14 @@ public class ChognzhiAdapter extends BaseAdapter {
               chognzhiDagliogok = (Button) view.findViewById(R.id.chognzhi_dagliogok);
               chognzhiQuxiao = (Button) view.findViewById(R.id.chognzhi_quxiao);
               chognzhidagliogchongzho =  view.findViewById(R.id.chognzhi_dagliogchongzho);
-                chognzhidagliogchongzho.setText("车牌号："+list.get(i).chepai);
+              chognzhidagliogchongzho.setText("车牌号："+list.get(i).chepai);
               final AlertDialog dialog = new AlertDialog.Builder(context).setView(view).show();
 
                 chognzhiDagliogok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
                         leirong = chogzhiChogzhinum.getText().toString();
                         //https://www.easy-mock.com/mock/5c8f3515c42b1c0235654282/jiaotong/recharge
-
                         ShowOkhttpApi.setCar("https://www.easy-mock.com/mock/5c8f3515c42b1c0235654282/jiaotong/recharge",list.get(position).id+"",leirong, new Mycall() {
                             @Override
                             public void success(String json) {
